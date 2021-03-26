@@ -3,13 +3,6 @@
 void runMenu()
 {
   int menuSelect = 0;
-  std::string firstName;
-  std::string lastName;
-  std::string gameTag;
-  int seed = 0;
-  std::string email;
-  std::string discordTag;
-  int phoneNumber = 0;
 
 
   std::cout << "Tourney Slam v.1" << std::endl;
@@ -21,36 +14,8 @@ void runMenu()
   std::cin >> menuSelect;
 
   switch (menuSelect) {
-    case 1: std::cout << "Insert player's full first name" << std::endl;
-      std::cin >> firstName;
-
-      std::cout << "Insert player's full last name" << std::endl;
-        std::cin >> lastName;
-
-      std::cout << "Insert player's gametag" << std::endl;
-        std::cin >> gameTag;
-
-      std::cout << "What is the player's seeding for this bracket?" << std::endl;
-      std::cout << "If left empty, the player will simply be seeded by when they registered" << std::endl;
-        std::cin >> seed;
-      while(email == NULL && phoneNumber = 0 && discordTag == NULL)
-      {
-        std::cout << "Enter the player's email if they have one.(optional)" << std::endl;
-          std::cin >> email;
-
-        std::cout << "Enter the player's Discord tag if they have one(if an email and/or a phone number is provided, this is optional)" << std::endl;
-          std::cin >> discordTag;
-
-        std::cout << "Enter the player's phone number if they have one(if an email and/or a Discord tag is provided, this is optional)" << std::endl;
-          std::cin >> phoneNumber;
-        if(email == NULL && phoneNumber = 0 && discordTag == NULL)
-        {
-          std::cout << "Some form of contact information must be provided, please enter either an email, a Discord tag, or a phone number" << std::endl;
-        }
-      }
-
+    case 1: addPlayer();
       //enter data into a new player object and insert into the list
-
       break;
     case 2: /* Read player data in from a preexisting file, */
       break;
@@ -64,7 +29,48 @@ void runMenu()
       break;
   }
 }
-int addPlayer();
+int addPlayer()
+{
+  std::string firstName;
+  std::string lastName;
+  std::string gameTag;
+  int seed = 0;
+  std::string email;
+  std::string discordTag;
+  int phoneNumber = 0;
+
+  std::cout << "Insert player's full first name" << std::endl;
+    std::cin >> firstName;
+
+    std::cout << "Insert player's full last name" << std::endl;
+      std::cin >> lastName;
+
+    std::cout << "Insert player's gametag" << std::endl;
+      std::cin >> gameTag;
+
+    std::cout << "What is the player's seeding for this bracket?" << std::endl;
+    std::cout << "If left empty, the player will simply be seeded by when they registered" << std::endl;
+      std::cin >> seed;
+    while(email == NULL && phoneNumber = 0 && discordTag == NULL)
+    {
+      std::cout << "Enter the player's email if they have one.(optional)" << std::endl;
+        std::cin >> email;
+
+      std::cout << "Enter the player's Discord tag if they have one(if an email and/or a phone number is provided, this is optional)" << std::endl;
+        std::cin >> discordTag;
+
+      std::cout << "Enter the player's phone number if they have one(if an email and/or a Discord tag is provided, this is optional)" << std::endl;
+        std::cin >> phoneNumber;
+      if(email == NULL && phoneNumber = 0 && discordTag == NULL)
+      {
+        std::cout << "Some form of contact information must be provided, please enter either an email, a Discord tag, or a phone number" << std::endl;
+      }
+    }
+
+    //construct player object based on given data
+    Player* newPlayer = new Player(firstName, lastName, gameTag, email, discordTag, phoneNumber, seed);
+    //add player object to tree
+}
 void saveBracket(fstream* outfile);
 void savePlayerData(fstream* outfile);
 void printBracket();

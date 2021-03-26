@@ -2,7 +2,7 @@
 #define TOURNEYSLAM
 
 #include <fstream>
-#include "player.h"
+#include "bracket.h"
 
 void runMenu();
 int addPlayer();

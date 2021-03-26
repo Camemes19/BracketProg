@@ -12,6 +12,7 @@ private:
   int wins;
   int losses;
 public:
+  Player(std::string fName, std::string lName, std::string tag, std::string email, std::string disTag, int pNumber, int pSeed);
   int getSeed(void);
   std::string getTag(void);
   std::string getName(void);
